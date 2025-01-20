@@ -39,3 +39,20 @@ funciones de estimacion para un set de graficos en un f(x):
   y = w1x + w2x^2 + b
   y = w1x + w2x^2 + w3x^3 + w4x^4 + b
   "al tener 2 explicaciones del mismo fenomeno siempre hay que escojer la mas simple"-monje chino japones de inglaterra
+### Aprendizaje = "es tratar de miniminizar el error en los datos que No tengp"
+
+Error en muestra Ein = 1/N Σe(yi,y(gorro)i) yi = lo que estime, y(gorro)= lo que tengo
+Error fuera de muestra Eout = Exε X[e(y,y(gorro))]
+El aprendizaje existe si y solo si Eout ≈ 0
+esto solo es posible si:
+   Ein ≈ 0
+   Ein ≈ Eout el promedio en mi muestra se parece al promedio en todos los dados
+   Hacer los errores suficientemente chiquitos y tener confianza que Ein ≈ Eout
+
+## K vecinos proximos
+datos de un scatrerplot de terremotos y explosiones donde se tienen puntos blancos de terremoto y negro de explosiones
+clase del punto mas cercano, busco el punto mas cercano y si es positivo digo que lo es
+Mejor con los 5 vecinos mas cercanos para determinar el area de explosivo y de terremoto para poder generalizar mejor
+
+
+ 
