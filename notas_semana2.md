@@ -55,4 +55,43 @@ clase del punto mas cercano, busco el punto mas cercano y si es positivo digo qu
 Mejor con los 5 vecinos mas cercanos para determinar el area de explosivo y de terremoto para poder generalizar mejor
 
 
- 
+ ## Un mundo en una dimension
+ los vecinos mas cortos funcionan bien para bajas dimensiones
+  sign(x):
+     if x >= 0:
+      return 1
+     return 0
+  
+ ^y = h_w1,w0(x) = sign(w1x + w0)
+es decir esta va a ser mi H, o decir que voy a escoger una red neuronal, becinox proximos etc.
+H= mi funcion, theta= los parametros de mi funcion
+
+## para medir los datos mal clasificados
+usamos una funcion de error:
+   Ein(h)= 1/m Σ Perdida(yesperada,h(xesperada))
+
+E0(h) = Esperanza_x_en_X[Perdida(f(xespe), h(xespera)] //esta es la funcion que quiero pero no la puedo hacer
+
+### desir que hay aprendizaje es poder asegurar que Ein ≈ Eout
+
+### Recapitulando
+Ei(h*) ≈ 0
+Problema de optimizacion
+Encontrar h* equivalente a encontrar el vector
+
+si Ein ≈ Eout vamos a desir que el aprendizaje es probablemente aproximadamente correcto(PAC Learning)
+
+## Desigualdad de Hoeffding
+Pr[E0(h*)-Ei(h*)[>=ε]<= 2exp(-2ε^2 * M)]
+{la probabilidad que no se parescan es menor o igual a esto}
+donde m es el numero de datos y ε la diferencia entre el eerror en  muestra y el error fuera de muestra impuesto.
+
+### Entonces el planteamiento
+Ein(h*) ≈ Eout(h*) es PAC
+
+### Traaduciendo
+Pr[|E0(h*)-Ei(h*)|>=ε] <= PR[Union_h_en_H |E0(h) -Ei(h)| >= ε]
+
+### El problema del aprendizaje queda como:
+Pr[|E0(h*)-Ei(h*)|>=ε] <= 2Nexp(-2ε^2 *M)
+donde N es el numero de hipotesis posibles en el conjunto H
