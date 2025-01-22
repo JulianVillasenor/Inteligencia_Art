@@ -95,3 +95,72 @@ Pr[|E0(h*)-Ei(h*)|>=ε] <= PR[Union_h_en_H |E0(h) -Ei(h)| >= ε]
 ### El problema del aprendizaje queda como:
 Pr[|E0(h*)-Ei(h*)|>=ε] <= 2Nexp(-2ε^2 *M)
 donde N es el numero de hipotesis posibles en el conjunto H
+
+## Recapitulando
+Decimos que f ≈ h* si:
+      Ei(h*) ≈0  
+      y  
+      E0(h*)≈Ei(h*)  
+ Ein(theta) = 1/M Σ Perdida(yi, h_theta(yi))
+ Eout(theta) = E_x_ε_X[Perdida(f(x), h_theta(yi))]
+Ein(theta)≈0, Ein(theta) ≈ Eout(theta)  
+              estimacion ≈ error  
+ ### La probabilidad de que el error promedio en todos mis datos es , es algun numero menor o igual a ke^(-ε^2 * M)
+PR[|Eout(theta) - Ein()theta|> ε] = < ke^(-ε^2 * M)  
+
+### Entonces para que el aprendizaje sea posible necesito muchos datos
+pero tambien me interesa mas
+PR[Union |Eout(theta)-Ein(theta)| > ε]
+
+un evento es cualquier subconjunto de posible salida  
+una funcion de probabilidad es:
+P: P -> R  
+P(A) >= 0  
+P(vacio) = 0  
+P(U) = 1  
+P(AUB) = P(A) + P(B) - P(AinterseccionB)  
+tal que:  
+PR[Union |Eout(theta)-Ein(theta)| > ε] <= ΣPr[Eout(theta)-Ein(theta)| > ε]  
+## Y el problema de aprendizaje queda como...
+Pr[|E0(h*)-Ei(h*) >= ε]...
+
+## Clasificacion binaria
+h0: X -> {-1,1}, h0εH  
+Una gran cantidad de transplantes entre diferentes hipotesis  
+Respecto al conjunto de aprendizaje, muchas hipotesis son iguales  
+
+## Dicotomias
+Hipotesis h : X ->{-1,1}, h0 ε H  
+H = un conjunto de funciones que se van a estar aplicando en esl espacio X -> {-1,1}  
+Dicotomia  
+h: {x(1),...,x(M)} -> {-1,1}, h0 ε H(x(1),...,x(M))  
+|H| = infinito  
+
+## La funcion de crecimiento
+m_H(M) = max_(x(1),...,x(M) ε X) |H(x(1),...,x(M))|  
+Acotando a m_h(M) < 2^M  
+
+la cardinalidad depende de la funcion que estoy utilizando y mis puntos  
+la funcion de crecimiento me da la maxima cardinalidad posible  
+
+2^4 - 2 = respuesta a como podemos dividir los puntos
+
+h(x) = sign(w1x1 + w2x2 + b)  
+X = R^2  
+card(H)= infinito  
+m_H(1) = 2  
+m_h(2) = 4 = 2^2   
+m_h(3) = 8 = 2^3  tal que la dimension VC de esta formula va  a ser 3  
+mh+h(4) = 14 < 2^4 ... a partir de aqui no me puedo aprender de memoria la cardinalidad de los datos  
+
+m_H(M)<= 2^M  
+puesdo desir que el crecimiento es de notacion O(M^(dvc))
+## La dimension VC  
+d_vc(H) es el valor ,as grande de M para el cual m_H(M) = 2^M  
+Para cualquier conjunto {x1,...,x(m)} ε X  
+Para cualquier asignacion f(x) ε {-1,1}  
+
+## REgla de oro
+si el conjunto de datos es 10 veces la dimencion vc significa que aprendo
+M >= 10d_vc  
+Necesito comprimir la informacion al menos 10 veces para poder decir que aprendi algo  
