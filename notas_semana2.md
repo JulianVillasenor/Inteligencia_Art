@@ -164,3 +164,26 @@ Para cualquier asignacion f(x) ε {-1,1}
 si el conjunto de datos es 10 veces la dimencion vc significa que aprendo
 M >= 10d_vc  
 Necesito comprimir la informacion al menos 10 veces para poder decir que aprendi algo  
+
+
+## Reacpitulacion
+ ### 23/01/2025  
+ Y_gorro  = w1x1 + w2x3 + b  
+### Necesito datos para aprender
+ Cuantos datos?  
+ Cual es mi funcion?  
+ Entre mas complicado el modelo se necesitan mas datos  
+ Necesito muchos datos y una funcion que cuando la utilice el error se haga chiquito  
+ Necesito un modelo y que se pueda ajusta, el numero de datos es 10 veces la dimension VC  
+ El numero total de parametros multiplicadao por 10 = el minimo numero de datos que necesitamos  
+
+ ## Arboles de decision:
+ ### Hypotesis : decision trees f: X-> Y  
+ explicar los fenomeno a traves de los arboles de decision, es explicar los datos.  
+ El numero de arboles si tienes n variables con 2 estados el numero de arboles que puedes hacer es 2^(2^n)  
+ Aprender de el arbol mas chico es un problema NP-complete [Hyafil & Rivest]  
+
+ Heuristica:  
+   -Empieza de un arbol de decision vacion  
+   - Divide en el mejor 
+ 
