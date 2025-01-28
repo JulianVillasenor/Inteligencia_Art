@@ -37,4 +37,4 @@ acc_nodod : int
 
 Necesitamos un nodo raiz que tenga enlace a sus hijos tal que sus hijos tengan nodos hojas, no necesito que esten doblemente enlazados.  
 """  
-   atributos = list(datos[0].keys())
+    atributos = list(datos[0].keys())
