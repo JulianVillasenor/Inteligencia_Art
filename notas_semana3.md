@@ -36,5 +36,19 @@ acc_nodod : int
 ### Como modelar el arbol?? :
 
 Necesitamos un nodo raiz que tenga enlace a sus hijos tal que sus hijos tengan nodos hojas, no necesito que esten doblemente enlazados.  
-"""  
-    atributos = list(datos[0].keys())
+  
+     atributos = list(datos[0].keys())
+     atributos.remove(target)
+
+     criterios para determinar si es nodo hoja
+     if len(datos) == 0 or len(atributos) == 0:
+       return NodoQ(termional = True, clase_default=clase_default)
+    clases = Counter(d[target] for d in datos)
+    clase_default = clases.most_common(1)[0][0]
+
+    if (max_prfundidad == 0 or
+      len(datos) <= min ejemplos or
+      clases.most_common(1)[0][1] / len(datos) >= acc_node:
+
+      return NodoQ(terminal=True, clase_default = clase_default)
+      
