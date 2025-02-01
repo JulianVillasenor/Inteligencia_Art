@@ -51,4 +51,4 @@ Necesitamos un nodo raiz que tenga enlace a sus hijos tal que sus hijos tengan n
       clases.most_common(1)[0][1] / len(datos) >= acc_node:
 
       return NodoQ(terminal=True, clase_default = clase_default)
-      
+
