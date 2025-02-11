@@ -101,3 +101,40 @@ para epocho de 1 a max_epochs
    si||▼wJ(w)|1↑ < e_tot :  
      regresa w,b  
      
+## 
+Pr(Y=1|xi w,b) = Θ(z),
+z=w1x1 + w2x2 + ...+ wnxn + b
+Θ(z) = 1/(1 + e^-z)  
+DEcenso de gradiente:
+w <- winicial
+b <- b inicial
+para epochs de 1 a max_epochs
+  ▼w Ein <- calcula_gradiente(X,Y,w,b)
+  d/db Ein <- calcula derivada(X,Y,w,b)
+  hist.append(calcula.Ein(X,Y,w,b))
+  w <- w - n▼wEin
+  b <- b - n d/db Ein
+   if ||▼wEin|| < Etotal:
+       break
+
+[dEin]/[dw_i] = d/dwi    
+1/m Σ - yi - (1 - yi) log (1 - y^i)  
+y^i = w1x1 + w2x2 + ...+ wnxn + b  
+la derivada con respecto a w  
+1/m Σ - yi/y^i dΘ(zi)/dwj + 1-yi/1-y^i dΘ(zi)/dwj  
+
+dΘ(zi)/dwj = dΘ(zi)/d(zi) dzi/dwj = Θ(zi)(1 - Θ(zi))x_i_j  
+dEin/dwj = Σ - (yi/y^i) y^i(1 - y^i)xi_j + 1-yi/1-y^i y^i(1 - y^i)xi_j  ;  
+= - 1/m Σ [yi - y^i]Xi_j  es el -promedio de las y - y estimadas   
+
+## para hacer el aprenizaje utilizamos matricesz:  
+
+X = [[x1_1, ...., x1_n],  
+     [......],  
+     [xm_1, ..., xm_n]]  
+Y = [yi, y2, ..., ym]  
+Y^ = sigmoid(Xw + 1b); talque Y^(m,1) = sigmoide (shape[m,n]shape(n,1) + shape(m,1)(1,1))  
+como caculo la derivada de Ein respecto a b  
+dEin/db  = - promedio(Y- Y^) #este el el promedio de todas las y - las estimadas  
+▼wEin = -1/m X^t(Y - Y^)
+
