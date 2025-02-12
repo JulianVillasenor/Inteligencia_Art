@@ -186,10 +186,11 @@ E_{in} = - \frac{1}{m} \sum \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat
 > Esto muestra que el gradiente es el promedio de las diferencias entre las etiquetas reales y las estimadas, ponderado por las características.
 
 ### **Derivada respecto a \( b \)**  
+$$
 \[
 \frac{dE_{in}}{db} = - \text{promedio}(Y - \hat{Y})
 \]
-
+$$
 ## 🚀 **Optimización con Notación Matricial**  
 - La matriz de entrada \( X \) tiene dimensiones \( (m,n) \).  
 - La salida estimada \( Y^ \) se calcula como:  
