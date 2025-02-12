@@ -55,10 +55,10 @@ como mido h≈f?
 Como encuentro h*?
 
 para clasificacion lineal binaria:
-
+$$
 y^ = h_w(x) = sign(w1x1 + w2x2 + ... + wnx2 + w0).
 H = {h_w|wεR, h_w(x)=sign(Σwixi + w0)}
-
+$$
 Ejemplo, tengo a Y y Y^estimados  
 Y = {y1,y2,..,ym}
 Y^ = {y^1,y^2,..,y^m}
