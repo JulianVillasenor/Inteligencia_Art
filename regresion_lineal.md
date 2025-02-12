@@ -145,9 +145,7 @@ dEin/db  = - promedio(Y- Y^) #este el el promedio de todas las y - las estimadas
 ### **Función de probabilidad y sigmoide**  
 Se define la probabilidad condicional \( Pr(Y=1 | x_i, w, b) \) usando la función sigmoide:  
 
-\[
 \Theta(z) = \frac{1}{1 + e^{-z}}
-\]
 
 donde \( z \) es la combinación lineal de los pesos y las características:  
 
