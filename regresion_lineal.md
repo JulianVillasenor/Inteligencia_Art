@@ -102,20 +102,20 @@ para epocho de 1 a max_epochs
      regresa w,b  
      
 ## 
-Pr(Y=1|xi w,b) = Θ(z),
-z=w1x1 + w2x2 + ...+ wnxn + b
+Pr(Y=1|xi w,b) = Θ(z),  
+z=w1x1 + w2x2 + ...+ wnxn + b  
 Θ(z) = 1/(1 + e^-z)  
-DEcenso de gradiente:
-w <- winicial
-b <- b inicial
-para epochs de 1 a max_epochs
-  ▼w Ein <- calcula_gradiente(X,Y,w,b)
-  d/db Ein <- calcula derivada(X,Y,w,b)
-  hist.append(calcula.Ein(X,Y,w,b))
-  w <- w - n▼wEin
-  b <- b - n d/db Ein
-   if ||▼wEin|| < Etotal:
-       break
+DEcenso de gradiente:  
+w <- winicial  
+b <- b inicial  
+para epochs de 1 a max_epochs  
+  ▼w Ein <- calcula_gradiente(X,Y,w,b)  
+  d/db Ein <- calcula derivada(X,Y,w,b)  
+  hist.append(calcula.Ein(X,Y,w,b))  
+  w <- w - n▼wEin  
+  b <- b - n d/db Ein  
+   if ||▼wEin|| < Etotal:  
+       break  
 
 [dEin]/[dw_i] = d/dwi    
 1/m Σ - yi - (1 - yi) log (1 - y^i)  
@@ -138,3 +138,67 @@ como caculo la derivada de Ein respecto a b
 dEin/db  = - promedio(Y- Y^) #este el el promedio de todas las y - las estimadas  
 ▼wEin = -1/m X^t(Y - Y^)
 
+# 📊 Análisis de Notas sobre Descenso de Gradiente y Regresión Logística  
+
+## 🔍 Definiciones Claves  
+
+### **Función de probabilidad y sigmoide**  
+Se define la probabilidad condicional \( Pr(Y=1 | x_i, w, b) \) usando la función sigmoide:  
+
+\[
+\Theta(z) = \frac{1}{1 + e^{-z}}
+\]
+
+donde \( z \) es la combinación lineal de los pesos y las características:  
+
+\[
+z = w_1 x_1 + w_2 x_2 + ... + w_n x_n + b
+\]
+
+### **Descenso de Gradiente**  
+1. Inicializar \( w \) y \( b \).  
+2. Para cada **epoch**:
+   - Calcular el gradiente de la función de error respecto a \( w \):  
+     \[
+     \nabla_w E_{in}
+     \]
+   - Calcular el gradiente respecto a \( b \).  
+   - Actualizar los parámetros con un factor de aprendizaje \( \eta \):  
+     \[
+     w \leftarrow w - \eta \nabla_w E_{in}
+     \]
+     \[
+     b \leftarrow b - \eta \frac{d}{db} E_{in}
+     \]
+   - Criterio de parada: cuando la norma del gradiente sea menor que un umbral \( E_{total} \).
+
+## 📌 **Cálculo de las Derivadas**  
+
+### **Función de costo (entropía cruzada)**  
+\[
+E_{in} = - \frac{1}{m} \sum \left[ y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i) \right]
+\]
+
+### **Derivada respecto a \( w_j \)**  
+\[
+\frac{dE_{in}}{dw_j} = - \frac{1}{m} \sum (y_i - \hat{y}_i) x_{i,j}
+\]
+> Esto muestra que el gradiente es el promedio de las diferencias entre las etiquetas reales y las estimadas, ponderado por las características.
+
+### **Derivada respecto a \( b \)**  
+\[
+\frac{dE_{in}}{db} = - \text{promedio}(Y - \hat{Y})
+\]
+
+## 🚀 **Optimización con Notación Matricial**  
+- La matriz de entrada \( X \) tiene dimensiones \( (m,n) \).  
+- La salida estimada \( Y^ \) se calcula como:  
+
+\[
+\hat{Y} = \text{sigmoid}(XW + b)
+\]
+
+- Gradiente respecto a \( W \) usando notación matricial:  
+\[
+\nabla_w E_{in} = - \frac{1}{m} X^T (Y - \hat{Y})
+\]
