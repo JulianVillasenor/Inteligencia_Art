@@ -201,3 +201,66 @@ $$
 \[
 \nabla_w E_{in} = - \frac{1}{m} X^T (Y - \hat{Y})
 \]
+
+## notas del Search Problems
+A search problem consist of
+A state space, A transition model, a Start state, goal test and path cost function
+
+### Problema
+S={s1,..,sn}
+Sf ε S conjunto de estados finales.
+A = {a1,...,an} acciones
+Modelo = {acciones_legales,transicion, costo}
+acciones_legales: S -> P(A) va del conjunto S al conjunto potencia de A
+pacman:
+S={p,t1,..,tn}
+pε {0,1,2,3,4,5,6,7,8,9}
+ti ε {0,1}
+S = {p1,..,p9}
+pi ε {0,1} ,    |S| = 9 * 2^8
+
+class ModeloBusqueda:  
+  def __init__(self,S,A):
+    self.S = S[i]  
+    self.A = A[i]  
+ def acciones_legales(self,s):  
+   return self.A[:]  
+ def transicion(self,s,a):
+   raise NotImplementedError('Programalo flojito')
+ def costo_local(self,s,a):
+   return 1
+   ### ejemplo de las torres de hanoi:  
+   S=(list_A, list_B,list_C)
+     list_A={[d_A_1,d_A_2,d_A_3,d_A_4,d_A_5],,[..],[d_A_1,d_A_3,d_A_5]}, conjunto potencia = 2^5  
+     list_B= [d_B_1,d_B_2,d_B_3,d_B_4,d_B_5]d_B_1........ 2^5  
+     list_c=[d_C_1...]... 2^5  ; ,list_A * list_A * list_A =   2^15  
+     S = (d1,d2,d3,d4,d5)  donde d1<d2<d3<d4<d5  
+     dj ε {A,B,C}  
+     |S|=3^5  
+     A = {'AB','AC','BA', 'BC', 'CA', 'CB'}  
+class Torre_Hanoi(ModeloBusqueda):
+  def __init__(self,n):
+    self.A=['AB','AC','BA', 'BC', 'CA', 'CB']  
+    self.n = n  
+  def acciones_legales(self,s):
+    if len(s) != self.n or not set(s).subset({'A','B','C'}):  
+       raise VaulueError('lo que sea')  
+    av = []  
+    for a in self.A:
+      de, hacia = a[0],a[1]
+        if de in S and (de not in S or S.index(de)<S.index(hacia)):  
+          av.append(a)  
+    return av  
+    def transicion(self,s,a):
+      costo_local = 1  
+      if a not in self.acciones_legales(s):  
+        raiseErrorValue:('Error la accion no es valida')  
+      Sn=S[:]  
+      Sn[S.index(a[0])] = a[1]  
+      return Sn, costo_local  
+
+  
+
+     
+
+
