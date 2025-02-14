@@ -258,9 +258,99 @@ class Torre_Hanoi(ModeloBusqueda):
       Sn=S[:]  
       Sn[S.index(a[0])] = a[1]  
       return Sn, costo_local  
+### Notas del viernes 14 de febrero
 
+Complejidad del algoritmo de dixtra = O(n^d*)  
+donde n = numero de nodos y d= la profundidad  
+
+Exponential State Space Sizes:  
+Search Problem: Eat all the food  
+PAcman options: 10x12=120  
+Food count: 30  
+X=(p_x,p_y,p_1,...,p_30)  
+|X| = 10*12*2^30 = 120*10^9 //el numero de estados  
+
+## Search Trees  
+A search tree:  
+  this is a "what if" tree of plans and outcomes  
+  start state at the root node  
+  children correspond to succesors  
+  Nodes contain states, correspond to paths to those states  
+  For most problems, we can never actually build thw whole tree  
+Con la estructura de arbol en cada momento se todos los estados posibles, si llego a un estado terminal
+llego a un estado completo. Significa que el algoritmo es alcanzable, osea siempre encuentra una solucion
   
+Ejemplo:  
+
+  class Nodo:  
+    def __init__(self, s, padre=none, accion=none, depth=0, costo=0)
+      self.s = s  
+      self.padre = padre  
+      sefl.depth = depth  
+      self.costo = costo if padre =none else padre.costo + costo  
+
+    def genera_plan(self):  
+      return [self.s,0] if self.padre=none
+      else self.padre.genera_plan() + [self.a, [self.a, (self.s, self.costo)]
+
+    def generar_hijos(self, modelo):  
+      return[Nodo(modelo.transicion(sef.s,a)[0],
+              padre=self, 
+              a=a,
+              depth=depth+1,
+              costo= self.costo + modelo.transicion(self,a)[1])
+              for a in modelo.acciones_legales(self.s)]
+dMax = profundidad maxima del arbol de planes
+d* = es la profundidad donde se encuentra la solucion optima  
+dmin = es la profundidad minima donde hay al menos una solucion.  
+b = factor de ramificacion  
+entonces puedo ver como tengo [nodo, profundidad] nodos de esta manera:
+[1,0],[2,1],[4,2],[16,3] hasta llegar a b^dmax  
+ejemplo de comportamiento: 
+[S] -s-> []  
+[p,e,d] -d-> [p,e]  
+[p,e,e,c,b] -b->[p,e,e,c]  
+[p,e,e,c,a] -a->[p,e,e,c]  
+[p,e,e,c] -c-> [p,e,e]  
+[p,e,e] -e-> [p,e]  
 
      
+## General tree search:  
+function Tree-Search(problem, strategy) returns a solution, or failure initialize the search  
+tree using the initial state of problem.  
+loop do:  
+  if there are no candidates for expansion then return false  
+  choose a leaf node for expansion according to strategy.  
+  if the node contains a goal state then return the corresponding solution  
+  else expand the node and add the resulting nodes to the search tree.  
+  end.  
+### importnat ideas
+Fronties(aka fringe), expansion, exploration strategy,  
+main question: wish fronties nodes to explore.  
+
+### State splace vs Search tree  
+Each node in the search tree is an entire path in the state space.  
+
+### DEpth first search  
+Strategy: expand deepest node first  
+implementation: frontier es a LIFO stack  
+
+DFS:  
+  optimo: no,  
+  completo: si,  
+  complejidad temporal: O(b^(d_max))//ocupa mucho tiempo  
+  complejidad material: O(b * d_max)//ocupa poca memoria
+
+##33 Breath first search  
+Strategy: expand shallowest node first  
+Implementation:fringe is a fifo queue  
+
+BFS:  
+  optimo: no, (si d* = dmin es optimo)    
+  completo: si,  
+  complejidad temporal: O(b^(d_min))//   
+  complejidad material: O(b^(d_min+1))//ocupa poca memoria
+
+
 
 
