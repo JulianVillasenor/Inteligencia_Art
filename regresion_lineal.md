@@ -338,7 +338,7 @@ implementation: frontier es a LIFO stack
 DFS:  
   optimo: no,  
   completo: si,  
-  complejidad temporal: O(b^(d_max))//ocupa mucho tiempo  
+  complejidad temporal: O(b^(d_max))//ocupa mucho tiempo  1 + x + x^2 +...+x^d_max
   complejidad material: O(b * d_max)//ocupa poca memoria
 
 ##33 Breath first search  
@@ -348,9 +348,15 @@ Implementation:fringe is a fifo queue
 BFS:  
   optimo: no, (si d* = dmin es optimo)    
   completo: si,  
-  complejidad temporal: O(b^(d_min))//   
-  complejidad material: O(b^(d_min+1))//ocupa poca memoria
-
+  complejidad temporal: O(b^(d_min))//    1 + x + x^2 +...+x^d_min 
+  complejidad material: O(b^(d_min+1))//ocupa poca memoria  
+1 + x + x^2 +...+x^n-1 < x^n  
+IDS(Iterative deeph search):
+  optimo: no, solo si d* = dmin
+  completa: si
+  tiempo:O(b^dmin)
+  memoria: O(bd_min)
+## Graph Search  
 
 
 
