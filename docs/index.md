@@ -5,7 +5,7 @@ layout: default
 
 # 📚 Notas de Inteligencia Artificial
 
-Bienvenido a este sitio donde encontrarás un resumen de los temas cubiertos en el curso de **Inteligencia Artificial**. Estas notas fueron redactadas por *Julian Villaseñor* y cubren desde conceptos básicos hasta algoritmos avanzados.
+ Bienvenido a el indice de las notas de **Inteligencia Artificial**.
 
 ---
 
